@@ -1,10 +1,9 @@
 {
-  "name": "@paulrberg/solidity-template",
-  "description": "Setup for writing Solidity smart contracts",
+  "name": "patient-consent-contract",
+  "description": "Blockchain driven solution for patient consent of sharing private information ",
   "version": "1.0.0",
   "author": {
-    "name": "Paul Razvan Berg",
-    "url": "https://paulrberg.com"
+    "name": "Vladimir Romashchenko"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
@@ -55,7 +54,7 @@
     "smart-contracts",
     "solidity"
   ],
-  "license": "WTFPL",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
@@ -70,7 +69,8 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,json,md,sol,ts}\"",
     "prettier:list-different": "prettier --config .prettierrc --list-different \"**/*.{js,json,md,sol,ts}\"",
     "test": "hardhat test",
-    "typechain": "hardhat typechain"
+    "typechain": "hardhat typechain",
+    "preinstall": "npm run compile"
   },
   "dependencies": {
     "solc": "0.8.1"
