@@ -51,8 +51,17 @@ describe("Unit tests", function () {
             await permissions.addClient(users[0].address, id);
 
             expect(await permissions.getClientId(users[0].address)).to.equal(id);
-        })
+        });
 
+        it("should allow mapping from client id to client address", async function () {
+            const permissions: DataAccessPermissions = this.permissions;
+            const users: SignerWithAddress[] = this.signers.users;
+            const id = 0;
+            await permissions.addClient(users[0].address, id);
+
+            expect(await permissions.getClientAddress(id)).to.equal(users[0].address);
+        })
+        
     });
 });
 

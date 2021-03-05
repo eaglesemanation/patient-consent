@@ -38,4 +38,8 @@ contract DataAccessPermissions is PatientConsentRoles {
     function getClientId(address _client) external view returns(uint32) {
         return clientAddressToId[_client];
     }
+
+    function getClientAddress(uint32 _id) external view returns(address) {
+        return idToClientAddress[_id];
+    }
 }
