@@ -49,7 +49,8 @@
   },
   "files": [
     "/contracts",
-    "/hardhat.config.ts"
+    "/hardhat.config.ts",
+    "/tsconfig.json"
   ],
   "license": "MIT",
   "scripts": {
