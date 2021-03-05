@@ -19,7 +19,7 @@ describe("Unit tests", function () {
     describe("Roles", function () {
         beforeEach(async function () {
             const rolesArtifact: Artifact = await hre.artifacts.readArtifact("PatientConsentRoles");
-            this.roles = await deployContract(this.signers.admin, rolesArtifact);
+            this.roles = await deployContract(this.signers.admin, rolesArtifact) as PatientConsentRoles;
         });
 
         it("should make deployer an admin", async function () {
