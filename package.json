@@ -48,7 +48,8 @@
     "solidity-coverage": "^0.7.12"
   },
   "files": [
-    "/contracts"
+    "/contracts",
+    "/hardhat.config.ts"
   ],
   "license": "MIT",
   "scripts": {
