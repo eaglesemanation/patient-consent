@@ -12,11 +12,11 @@ async function main(): Promise<void> {
   // await run("compile");
 
   // We get the contract to deploy
-  const Roles: ContractFactory = await ethers.getContractFactory("PatientConsentRoles");
-  const roles: Contract = await Roles.deploy();
-  await roles.deployed();
+  const PatientConsent: ContractFactory = await ethers.getContractFactory("PatientConsent");
+  const patientConsent: Contract = await PatientConsent.deploy();
+  await patientConsent.deployed();
 
-  console.log("PatientRoles deployed to: ", roles.address);
+  console.log("PatientRoles deployed to: ", patientConsent.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
