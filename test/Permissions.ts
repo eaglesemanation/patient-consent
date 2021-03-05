@@ -7,6 +7,7 @@ import { DataAccessPermissions } from "../typechain/DataAccessPermissions";
 import { Signers } from "../types";
 
 const { deployContract } = hre.waffle;
+const { constants } = hre.ethers;
 
 describe("Unit tests", function () {
     before(async function () {
@@ -47,10 +48,23 @@ describe("Unit tests", function () {
         it("should allow mapping from client address to client id", async function () {
             const permissions: DataAccessPermissions = this.permissions;
             const users: SignerWithAddress[] = this.signers.users;
-            const id = 0;
+            const id = 1;
             await permissions.addClient(users[0].address, id);
 
             expect(await permissions.getClientId(users[0].address)).to.equal(id);
+        });
+
+        it("shouldn't fail if client address is not mapped to client id", async function () {
+            const permissions: DataAccessPermissions = this.permissions;
+            const users: SignerWithAddress[] = this.signers.users;
+
+            expect(await permissions.getClientId(users[0].address)).to.equal(0);
+        });
+
+        it("shouldn't fail if client address is zeroAddress", async function () {
+            const permissions: DataAccessPermissions = this.permissions;
+
+            expect(await permissions.getClientId(constants.AddressZero)).to.equal(0);
         });
 
         it("should allow mapping from client id to client address", async function () {
@@ -60,6 +74,13 @@ describe("Unit tests", function () {
             await permissions.addClient(users[0].address, id);
 
             expect(await permissions.getClientAddress(id)).to.equal(users[0].address);
+        });
+
+        it("shouldn't fail if client id is not mapped to client address", async function () {
+            const permissions: DataAccessPermissions = this.permissions;
+            const id = 1;
+
+            expect(await permissions.getClientAddress(id)).to.equal(constants.AddressZero);
         })
         
     });
